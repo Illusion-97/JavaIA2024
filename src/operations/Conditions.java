@@ -99,6 +99,16 @@ public class Conditions {
             case 4 -> "Bound Value";
             default -> "Impair";
         });
+
+        /*
+        * 0 ->  Origin Value
+        *       Lower Half
+        * 1 ->  Lower Half
+        * 2 ->  Mid Value
+        * 3 ->  Upper Half
+        * 4 ->  Bound Value
+        *       Upper Half
+        * */
         //endregion
     }
 }
