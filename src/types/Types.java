@@ -1,5 +1,8 @@
 package types;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Types {
 
     // Déclaration de variable dans une classe : Attribut
@@ -74,6 +77,25 @@ public class Types {
         System.out.println(aBooleanTable[1][2]); // false
         // À l'utilisation (lecture / écriture) on passe par les index | à l'initialisation on utilise la taille
 
+
+        List<String> aStringList = new ArrayList<>();
+        // System.out.println(aStringList.get(0)); IndexOutOfBoundsException
+        // Ajoute à la fin de la liste
+        aStringList.add("first");
+        System.out.println(aStringList.get(0)); // first
+        String second = "second";
+        aStringList.add(second);
+        String third = "third";
+        // Ajoute à une position précise et décale les autres éléments
+        aStringList.add(0, third);
+        aStringList.add(1, "fourth");
+        System.out.println(aStringList.get(0)); // third
+        System.out.println(aStringList.get(1)); // fourth
+        System.out.println(aStringList.indexOf(second)); // 3
+        // Si l'élément recherché n'est pas présent dans la liste, il retourne -1
+        System.out.println(aStringList.indexOf("fifth")); // -1
+        aStringList.remove(0);
+        System.out.println(aStringList.get(0)); // fourth
 
 
         //endregion
