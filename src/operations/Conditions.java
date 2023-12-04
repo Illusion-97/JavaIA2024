@@ -55,6 +55,24 @@ public class Conditions {
                 System.out.println("b == c");
             }
         }
+
+        boolean condition = random.nextBoolean();
+        if (condition) {
+            System.out.println("Condition Vraie");
+        } else {
+            System.out.println("Condition Fausse");
+        }
+
+        // Syntaxe ternaire : condition ? {valeur si true} : {valeur si false}
+        String result = condition ? "vraie" : "fausse";
+        System.out.println("Condition " + result);
+
+        System.out.println("Condition " + (condition ? "vraie" : "fausse"));
+
+        System.out.println("Condition " + (random.nextBoolean() ? "vraie" : "fausse"));
+        //endregion
+
+        //region Multiple cases
         //endregion
     }
 }
