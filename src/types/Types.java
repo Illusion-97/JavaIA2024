@@ -36,6 +36,46 @@ public class Types {
         //endregion
 
         //region WRAPPER
+        Integer anIntWrapper = Integer.valueOf(0); // Boxing (contenir une valeur primitive dans un Object)
+        int anIntUnboxed = anIntWrapper.intValue(); // Unboxig
+        anIntWrapper = 10; // Boxing est automatique et passe par valueOf
+        anIntUnboxed = anIntWrapper; // Unboxing automatique via intValue
+        String numericString = "500";
+        int anIntFromString = Integer.parseInt(numericString); // Utile pour valider du texte ou des saisies utilisateur
+        System.out.println("anIntFromString = " + anIntFromString);
+        //endregion
+
+        //region COLLECTIONS
+        // Création de tableau avec des valeurs spécifiées (la taille du tableau dépends des valeurs données)
+        int[] anIntArray = {150,17,29,93,46};
+        // On accede a une valeur du tableau en précisant son index entre [] : variable[index]
+        System.out.println(anIntArray[0]); // 150 : Les index commencent à 0
+        // Que les [] soient mis au niveau type ou du nom de variable, l'effet est le même
+        // Pour créer un tableau dont je ne connais pas encore les valeurs, on précise la taille du tableau
+        String aStringArray[] = new String[10]; // type name[] = new type[length]
+        System.out.println(aStringArray[5]); // null
+        aStringArray[5] = "String Content"; // Remplace le null a l'index 5 par "String Content"
+        System.out.println(aStringArray[5]); // String Content
+        // System.out.println(aStringArray[15]); génère une 'erreur' : ArrayIndexOutOfBoundsException
+
+        boolean[][] aBooleanTable = {
+                {true, false},
+                {false, true, true},
+                {}
+        };
+        System.out.println(aBooleanTable[1][2]); //true
+        // Assure ici que chaque ligne possède le même nombre de colones
+        aBooleanTable = new boolean[3][5];
+        /*
+         * {false, false, false, false, false}
+         * {false, false, false, false, false}
+         * {false, false, false, false, false}
+        * */
+        System.out.println(aBooleanTable[1][2]); // false
+        // À l'utilisation (lecture / écriture) on passe par les index | à l'initialisation on utilise la taille
+
+
+
         //endregion
     }
 }
