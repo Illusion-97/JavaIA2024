@@ -1,7 +1,6 @@
 package types;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Types {
 
@@ -96,8 +95,37 @@ public class Types {
         System.out.println(aStringList.indexOf("fifth")); // -1
         aStringList.remove(0);
         System.out.println(aStringList.get(0)); // fourth
+        System.out.println(aStringList.indexOf(third)); // -1
+        aStringList.remove(third);
 
+        // Pour la création d'une liste à partir de données prédéfinies, il faut passer par une méthode
+        List<String> anotherStringList = List.of("first", second, third, "fourth");
 
+        // Ceci fait une copie de 'aStringList'
+        anotherStringList = new ArrayList<>(aStringList);
+
+        // Association clé/valeur
+        Map<String,String> aStringStringMap = new HashMap<>();
+        aStringStringMap.put("first","First Value");
+        System.out.println(aStringStringMap.get("first"));
+        String secondValue = "Second Value";
+        aStringStringMap.put(second,secondValue);
+        aStringStringMap.put(third,"Third Value");
+        String fourthValue = "Fourth Value";
+        aStringStringMap.put("fourth",fourthValue);
+        System.out.println(aStringStringMap.get(second));
+        // Ajoute OU Remplace une valeur dans la map
+        aStringStringMap.put(second,"New Second Value");
+        System.out.println(aStringStringMap.get(second));
+        String fifth = "fifth";
+        aStringStringMap.replace(fifth,"Fifth Value");
+        System.out.println(aStringStringMap.get(fifth)); // null
+        System.out.println(aStringStringMap.containsKey("fifth")); // false
+        System.out.println(aStringStringMap.containsValue(secondValue)); // false
+        // Demande de supprimer l'association clé/valeur {"third","Third Value"}
+        // Et retourne la valeur présente au moment de la demande
+        System.out.println(aStringStringMap.remove(third)); // Third Value
+        System.out.println(aStringStringMap.remove("fifth")); // null
         //endregion
     }
 }
