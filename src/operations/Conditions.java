@@ -57,11 +57,8 @@ public class Conditions {
         }
 
         boolean condition = random.nextBoolean();
-        if (condition) {
-            System.out.println("Condition Vraie");
-        } else {
-            System.out.println("Condition Fausse");
-        }
+        if (condition) System.out.println("Condition Vraie");
+        else System.out.println("Condition Fausse");
 
         // Syntaxe ternaire : condition ? {valeur si true} : {valeur si false}
         String result = condition ? "vraie" : "fausse";
@@ -73,6 +70,35 @@ public class Conditions {
         //endregion
 
         //region Multiple cases
+        switch (b) { // From 0 to 4
+            case 0:
+                System.out.println("Origin Value");
+                break; // Fin du cas
+            case 2:
+                System.out.println("Mid Value");
+                break;
+            case 4:
+                System.out.println("Bound Value");
+                break;
+            default: // Equivalent du dernier else apres des else if
+                System.out.println("Impair");
+        }
+
+        // Syntaxe 'améliorée'
+        switch (b) { // From 0 to 4
+            case 0 -> System.out.println("Origin Value");
+            case 2 -> System.out.println("Mid Value");
+            case 4 -> System.out.println("Bound Value");
+            default -> System.out.println("Impair");
+        }
+
+        // Switch avec retour de valeur
+        System.out.println(switch (b) { // From 0 to 4
+            case 0 -> "Origin Value";
+            case 2 -> "Mid Value";
+            case 4 -> "Bound Value";
+            default -> "Impair";
+        });
         //endregion
     }
 }
