@@ -100,6 +100,7 @@ public class Conditions {
             default -> "Impair";
         });
 
+        System.out.println("Exercice : ");
         /*
         * 0 ->  Origin Value
         *       Lower Half
@@ -109,6 +110,20 @@ public class Conditions {
         * 4 ->  Bound Value
         *       Upper Half
         * */
+        switch (b) {
+            case 0:
+                System.out.println("Origin Value");
+            case 1:
+                System.out.println("Lower Half");
+                break;
+            case 4:
+                System.out.println("Bound Value");
+            case 3:
+                System.out.println("Upper Half");
+                break;
+            default:
+                System.out.println("Mid Value");
+        }
         //endregion
     }
 }
