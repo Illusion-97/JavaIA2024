@@ -30,7 +30,7 @@ public class Animal {
         id = count;
         parents = new Animal[2]; // un attribut final doit être initialisé dans le constructeur
         // [null, null]
-        Veterinaire.animaux.add(this);
+        Veterinaire.declarer(this);
     }
 
     public Animal(String name) {

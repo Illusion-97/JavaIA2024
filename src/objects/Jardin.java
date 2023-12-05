@@ -20,6 +20,12 @@ public class Jardin {
         bergerAllemand.displayPride();
         Malinois era = new Malinois("Era", 3, null, null);
         Animal animalBerger = new BergerAllemand("Rex", 8, null, null);
+        if(animalBerger instanceof BergerAllemand) {
+            /*BergerAllemand castBergerFromAnimal = (BergerAllemand) animalBerger;
+            castBergerFromAnimal.displayPride();*/
+            ((BergerAllemand) animalBerger).displayPride();
+        }
+
         Animal animalMalouf = new Malinois("Malouf", 5, null, null);
         Veterinaire.checkUp();
     }
