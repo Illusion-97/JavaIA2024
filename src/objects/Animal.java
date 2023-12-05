@@ -4,6 +4,11 @@ package objects;
 public class Animal {
 
     private static long count = 0;
+    public enum AgeRange { // est statique par défaut
+        JEUNE,ADULTE,SENIOR
+    }
+    // Jeune : age < 3 / Senior : age >= 6
+
     /*
     * Lorsqu'une variable est déclarée directement dans une classe, il s'agit d'un attribut, une information qui définit la classe
     * Dans ce contexte on ajoute plusieurs informations aux attributs, et principalement la visibilité
@@ -58,5 +63,13 @@ public class Animal {
     public void happyBirthday() {
         age++;
         System.out.printf("Happy Birthday %s : %d an(s)%n", name, age);
+    }
+
+    public AgeRange getAgeRange() {
+        if (age < 3) return AgeRange.JEUNE;
+        else if (age >= 6) return AgeRange.SENIOR;
+        else return AgeRange.ADULTE;
+
+        // return age < 3 ? AgeRange.JEUNE : (age >= 6 ? AgeRange.SENIOR : AgeRange.ADULTE);
     }
 }

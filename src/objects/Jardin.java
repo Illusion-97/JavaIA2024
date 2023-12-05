@@ -10,6 +10,7 @@ public class Jardin {
         System.out.println("namedAnimal.id = " + namedAnimal.id);
         System.out.println("namedAnimal.name = " + namedAnimal.name);
         Animal animalErrant = new Animal("Errant", 3, null, null);
+        System.out.println("animalErrant.getAgeRange() = " + animalErrant.getAgeRange());
         Animal pedigree = new Animal("Pedigree", 2, anAnimal, namedAnimal);
         animalErrant.happyBirthday();
         /*System.out.println(pedigree.getAge());
