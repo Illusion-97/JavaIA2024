@@ -12,10 +12,10 @@ public class BergerAllemand extends Animal {
     }
 
     public BergerAllemand(String name, int age, Animal parent, Animal otherParent) {
-        super(name,age,parent,otherParent);
+        super(name, age, parent, otherParent);
     }
 
     public void displayPride() {
-        System.out.println(name + "démontre sa fierté : " + "WOUF! ".repeat(pride));
+        System.out.println(name + " démontre sa fierté : " + "WOUF! ".repeat(pride));
     }
 }

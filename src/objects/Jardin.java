@@ -17,5 +17,10 @@ public class Jardin {
         animalErrant.setAge(52);
         System.out.println(animalErrant.getAge());*/
         BergerAllemand bergerAllemand = new BergerAllemand();
+        bergerAllemand.displayPride();
+        Malinois era = new Malinois("Era", 3, null, null);
+        Animal animalBerger = new BergerAllemand("Rex", 8, null, null);
+        Animal animalMalouf = new Malinois("Malouf", 5, null, null);
+        Veterinaire.checkUp();
     }
 }
