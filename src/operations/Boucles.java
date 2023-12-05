@@ -1,6 +1,8 @@
 package operations;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -94,5 +96,34 @@ public class Boucles {
             }
             System.out.println(']');
         }
+
+        boolean condition = false;
+
+        while (condition) /*do*/ {
+            System.out.println("Inside while (do)"); // Ne sera jamais atteint puisque condition = false
+        }
+
+        do {
+            System.out.println("Inside do while"); // Sera exécuté au moins une fois
+        } while (condition);
+
+        List<Integer> aRandomIntegerList = new ArrayList<>();
+        for (int value: anIntArray) {
+            aRandomIntegerList.add(value);
+        }
+
+        int whileIteration = 0;
+        while (whileIteration < aRandomIntegerList.size()) {
+            whileIteration++; // important de mettre à jour la condition pour éviter la boucle infinie
+            System.out.println(aRandomIntegerList.get(whileIteration));
+        }
+
+        while (true) { // on demande volontairement de créer une boucle infinie
+            break; // Indispensable pour stopper ce genre de boucle
+        }
+
+        System.out.print("aRandomIntegerList : [");
+        aRandomIntegerList.forEach(value -> System.out.println(value));
+        System.out.println("]");
     }
 }
