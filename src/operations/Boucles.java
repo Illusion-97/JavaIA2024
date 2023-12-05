@@ -18,6 +18,16 @@ public class Boucles {
             System.out.println("Itération : " + i);
         }
 
-        // Syntaxe fori : for ({valeur de depart affectée a une variable}; {valeur limite de la variable pour la boucle}; {changement de valeur a chaque itération})
+        // Syntaxe fori : for ({valeur de depart affectée à une variable}; {valeur limite de la variable pour la boucle}; {changement de valeur a chaque itération})
+        int[] anIntArray = random.ints(origin, origin, bound).toArray();
+        for (int i = 0; i < anIntArray.length; i++) {
+            System.out.printf("Index : %d, Value : %d%n",i, anIntArray[i]);
+        }
+
+        System.out.print("anIntArray : {");
+        for (int value : anIntArray) { // Syntaxe foreach
+            System.out.printf("%d, ",value);
+        }
+        System.out.println("}");
     }
 }
