@@ -39,4 +39,14 @@ public class Animal {
         this.parents[0] = parent;
         this.parents[1] = otherParent;
     }
+
+    // Une méthode (fonction) est une définition d'un comportement à exécuter
+    // {visibilité} {type de retour} {nom}({paramètres})
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }
