@@ -42,11 +42,21 @@ public class Animal {
 
     // Une méthode (fonction) est une définition d'un comportement à exécuter
     // {visibilité} {type de retour} {nom}({paramètres})
-    public int getAge() {
+    /*public int getAge() {
         return age;
     }
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public void setAge() {
+        age++;
+    }
+
+    */
+    public void happyBirthday() {
+        age++;
+        System.out.printf("Happy Birthday %s : %d an(s)%n", name, age);
     }
 }

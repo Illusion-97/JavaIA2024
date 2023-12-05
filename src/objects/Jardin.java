@@ -11,8 +11,9 @@ public class Jardin {
         System.out.println("namedAnimal.name = " + namedAnimal.name);
         Animal animalErrant = new Animal("Errant", 3, null, null);
         Animal pedigree = new Animal("Pedigree", 2, anAnimal, namedAnimal);
-        System.out.println(pedigree.getAge());
+        animalErrant.happyBirthday();
+        /*System.out.println(pedigree.getAge());
         animalErrant.setAge(52);
-        System.out.println(animalErrant.getAge());
+        System.out.println(animalErrant.getAge());*/
     }
 }
