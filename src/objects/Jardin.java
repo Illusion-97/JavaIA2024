@@ -9,5 +9,7 @@ public class Jardin {
         Animal namedAnimal = new Animal("Petiot");
         System.out.println("namedAnimal.id = " + namedAnimal.id);
         System.out.println("namedAnimal.name = " + namedAnimal.name);
+        Animal animalErrant = new Animal("Errant", 3, null, null);
+        Animal pedigree = new Animal("Pedigree", 2, anAnimal, namedAnimal);
     }
 }

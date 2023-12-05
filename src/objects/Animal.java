@@ -32,4 +32,11 @@ public class Animal {
         // 'this' fait référence à l'objet actuel
         this.name = name;
     }
+
+    public Animal (String name, int age, Animal parent, Animal otherParent) {
+        this(name); // force le passage par un constructeur acceptant le même nombre d'arguments de même type
+        this.age = age;
+        this.parents[0] = parent;
+        this.parents[1] = otherParent;
+    }
 }
