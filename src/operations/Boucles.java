@@ -24,10 +24,10 @@ public class Boucles {
             System.out.printf("Index : %d, Value : %d%n",i, anIntArray[i]);
         }
 
-        System.out.print("anIntArray : {");
+        System.out.print("anIntArray : [");
         for (int value : anIntArray) { // Syntaxe foreach
             System.out.printf("%d, ",value);
         }
-        System.out.println("}");
+        System.out.println("]");
     }
 }
