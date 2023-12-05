@@ -16,5 +16,6 @@ public class Jardin {
         /*System.out.println(pedigree.getAge());
         animalErrant.setAge(52);
         System.out.println(animalErrant.getAge());*/
+        BergerAllemand bergerAllemand = new BergerAllemand();
     }
 }
