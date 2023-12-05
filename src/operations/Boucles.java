@@ -1,6 +1,8 @@
 package operations;
 
+import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Boucles {
     public static void main(String[] args) {
@@ -29,5 +31,26 @@ public class Boucles {
             System.out.printf("%d, ",value);
         }
         System.out.println("]");
+
+        // Solution foreach
+        System.out.print("anIntArray : [");
+        int iteration = 0;
+        for (int value : anIntArray) { // Syntaxe foreach
+            iteration++;
+            System.out.print(value + (iteration == anIntArray.length ? "]\n" : ", "));
+        }
+
+        // Solution fori
+        System.out.print("anIntArray : [");
+        for (int i = 0; i < anIntArray.length; i++)
+            System.out.print(anIntArray[i] + (i == anIntArray.length - 1 ? "]\n" : ", "));
+
+        // Solution stream
+        System.out.printf("anIntArray : [%s]%n",Arrays.stream(anIntArray)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(", ")));
+
+        // Solution sadisme
+        System.out.println("anIntArray : " + Arrays.toString(anIntArray));
     }
 }
