@@ -68,10 +68,10 @@ public class Boucles {
         * */
 
         /*
-         * [O,X,O]
-         * [O,X,O]
-         * [O,X,O]
-         * [O,X,O]
+         * [OXO]
+         * [OXO]
+         * [OXO]
+         * [OXO]
          * */
 
     }
