@@ -60,14 +60,15 @@ public class Boucles {
             }
         }
 
-        /*
+        /* Afficher aRandomBooleanTable avec les méthodes précédentes produirait un résultat similaire à ceci :
          * [true,false,true]
          * [true,false,true]
          * [true,false,true]
          * [true,false,true]
         * */
 
-        /*
+        /* Je souhaiterais plutôt afficher cela : O à la place de true, et X à la place de false
+        * sans tenir compte des virgules, et sans paires de crochets de trop
          * [OXO]
          * [OXO]
          * [OXO]
