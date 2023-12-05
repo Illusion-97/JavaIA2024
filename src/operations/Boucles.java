@@ -75,5 +75,24 @@ public class Boucles {
          * [OXO]
          * */
 
+        //fori
+        System.out.println("aRandomBooleanTable (fori) : ");
+        for (int i = 0; i < aRandomBooleanTable.length; i++) {
+            System.out.print('[');
+            for (int j = 0; j < aRandomBooleanTable[i].length; j++) {
+                System.out.print(aRandomBooleanTable[i][j] ? 'O' : 'X');
+            }
+            System.out.println(']');
+        }
+
+        //foreach
+        System.out.println("aRandomBooleanTable (foreach) : ");
+        for (boolean[] line : aRandomBooleanTable) {
+            System.out.print('[');
+            for (boolean value : line) {
+                System.out.print(value ? 'O' : 'X');
+            }
+            System.out.println(']');
+        }
     }
 }
