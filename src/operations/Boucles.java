@@ -52,5 +52,27 @@ public class Boucles {
 
         // Solution sadisme
         System.out.println("anIntArray : " + Arrays.toString(anIntArray));
+
+        boolean[][] aRandomBooleanTable = new boolean[random.nextInt(origin,bound)][random.nextInt(origin,bound)];
+        for (int i = 0; i < aRandomBooleanTable.length; i++) {
+            for (int j = 0; j < aRandomBooleanTable[i].length; j++) {
+                aRandomBooleanTable[i][j] = random.nextBoolean();
+            }
+        }
+
+        /*
+         * [true,false,true]
+         * [true,false,true]
+         * [true,false,true]
+         * [true,false,true]
+        * */
+
+        /*
+         * [O,X,O]
+         * [O,X,O]
+         * [O,X,O]
+         * [O,X,O]
+         * */
+
     }
 }
