@@ -29,8 +29,8 @@ public class Jardin {
         Animal animalMalouf = new Malinois("Malouf", 5, null, null);
         Veterinaire.checkUp();
 
-        BergerAllemand typeBerger = new BergerAllemand();
-        Malinois typeMalinois = new Malinois();
+        BergerAllemand typeBerger = new BergerAllemand("typeBerger");
+        Malinois typeMalinois = new Malinois("typeMalinois");
         Animal typeAnimal = typeBerger;
         Chien typeChien = typeBerger;
         BergerAllemand typeBergerCast = (BergerAllemand) typeChien;

@@ -73,4 +73,9 @@ public class Animal {
 
         // return age < 3 ? AgeRange.JEUNE : (age >= 6 ? AgeRange.SENIOR : AgeRange.ADULTE);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
