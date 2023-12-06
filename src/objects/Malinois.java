@@ -14,6 +14,6 @@ public class Malinois extends Animal implements Chien {
 
     @Override
     public void bark() {
-
+        // sout selon son AgeRange : Jeune -> HawHaw / Adulte : WafWaf / Senior : Wouf
     }
 }
