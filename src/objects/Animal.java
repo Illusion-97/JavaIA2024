@@ -31,6 +31,7 @@ public class Animal {
         parents = new Animal[2]; // un attribut final doit être initialisé dans le constructeur
         // [null, null]
         Veterinaire.declarer(this);
+        if (this instanceof Chien) FightClub.inscrire((Chien) this);
     }
 
     public Animal(String name) {

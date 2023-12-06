@@ -46,6 +46,10 @@ public class Jardin {
         System.out.println("C'est la fête !");
         typeMalinois.bark();
         typeBerger.bark();
+
+        System.out.println("C'est l'heure du du ... !");
+        FightClub.annonce();
+
     }
 
 
