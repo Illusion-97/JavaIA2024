@@ -49,7 +49,16 @@ public class Jardin {
 
         System.out.println("C'est l'heure du du ... !");
         FightClub.annonce();
+        System.out.println("\n");
+        era.fight(typeMalinois);
+        System.out.println("\n");
+        bergerAllemand.fight(typeBerger);
+        System.out.println("\n");
+        era.fight(typeBerger);
+        System.out.println("\n");
+        typeBerger.fight(typeMalinois);
 
+        FightClub.startTournament();
     }
 
 

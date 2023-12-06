@@ -13,6 +13,10 @@ public class FightClub {
         }
     }
 
+    public static void startTournament() {
+
+    }
+
     public static void inscrire(Chien chien){
         chiens.add(chien);
     }

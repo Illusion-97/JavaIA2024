@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.Random;
+
 public class Malinois extends Animal implements Chien {
     public Malinois() {
     }
@@ -23,4 +25,12 @@ public class Malinois extends Animal implements Chien {
         });
     }
 
+    @Override
+    public void fight(Chien adversaire) {
+        System.out.println(this +
+                (getVainqueur(adversaire, "l'honneur de son maître") == this
+                        ? " saute sur son maître !"
+                        : " part se cacher !"));
+
+    }
 }

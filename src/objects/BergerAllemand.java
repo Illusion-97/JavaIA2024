@@ -1,6 +1,8 @@
 package objects;
 
 
+import java.util.Random;
+
 public class BergerAllemand extends Animal implements Chien {
     private int pride = 10;
 
@@ -26,4 +28,11 @@ public class BergerAllemand extends Animal implements Chien {
         bark("WOUF! ".repeat(pride));
     }
 
+    @Override
+    public void fight(Chien adversaire) {
+        if (getVainqueur(adversaire, "sa fierté") == this) {
+            pride++;
+            displayPride();
+        }
+    }
 }
