@@ -28,5 +28,29 @@ public class Jardin {
 
         Animal animalMalouf = new Malinois("Malouf", 5, null, null);
         Veterinaire.checkUp();
+
+        BergerAllemand typeBerger = new BergerAllemand();
+        Malinois typeMalinois = new Malinois();
+        Animal typeAnimal = typeBerger;
+        Chien typeChien = typeBerger;
+        BergerAllemand typeBergerCast = (BergerAllemand) typeChien;
+        typeBergerCast.displayPride();
+        System.out.println();
+
+        checkUp(typeBerger);
+        checkUp(typeMalinois);
+        promener(typeBerger);
+        promener(typeMalinois);
+
+        typeBerger.displayPride();
+    }
+
+
+    private static void checkUp(Animal animal) {
+        System.out.println(animal.getAgeRange());
+    }
+
+    private static void promener(Chien chien) {
+        chien.bark();
     }
 }
