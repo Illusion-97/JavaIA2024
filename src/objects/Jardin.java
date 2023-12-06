@@ -43,6 +43,9 @@ public class Jardin {
         promener(typeMalinois);
 
         typeBerger.displayPride();
+        System.out.println("C'est la fête !");
+        typeMalinois.bark();
+        typeBerger.bark();
     }
 
 

@@ -6,4 +6,10 @@ package objects;
 * */
 public interface Chien {
     void bark(); // Signature de méthode (dans une interface la visibilité des méthodes est 'public')
+
+    // une methode avec le même nom et le même type de retour qu'une autre est dite 'surchargée' si elle possède des paramètres différents
+    default void bark(String voice) {
+        // default dans une interface permet de fournir un corps de méthode commun aux classes qui implémentent l'interface
+        System.out.println(this + " : " + voice);
+    }
 }

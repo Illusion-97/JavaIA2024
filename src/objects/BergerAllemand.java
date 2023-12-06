@@ -1,5 +1,6 @@
 package objects;
 
+
 public class BergerAllemand extends Animal implements Chien {
     private int pride = 10;
 
@@ -22,6 +23,7 @@ public class BergerAllemand extends Animal implements Chien {
 
     @Override // Réécrire un comportement existant
     public void bark() {
-        System.out.println("WOUF! ".repeat(pride));
+        bark("WOUF! ".repeat(pride));
     }
+
 }
