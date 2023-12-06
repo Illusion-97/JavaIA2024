@@ -31,20 +31,33 @@ public class TryCatch {
         * */
 
         try {
-            throwException();
-            throwRuntimeException();
             throwError();
-        } catch (Exception e) {
-            System.out.println("Exception catch");
+            throwRuntimeException();
+            throwException();
+            throwCustomException();
+            throwCustomRuntimeException();
+        } catch (Exception exception) {
+            System.out.println("exception.getClass().getSimpleName() = " + exception.getClass().getSimpleName());
+            System.out.println("exception.getMessage() = " + exception.getMessage());
+        } finally { // Toujours exécuté
+            System.out.println("Toujours présent !");
         }
+
     }
 
     private static void throwException() throws Exception {
         throw new Exception("Generic Exception");
     }
 
+    private static void throwCustomException() throws CustomException {
+        throw new CustomException();
+    }
+
     private static void throwRuntimeException() {
         throw new RuntimeException("Generic RuntimeException");
+    }
+    private static void throwCustomRuntimeException() {
+        throw new CustomRuntimeException("Custom RuntimeException");
     }
 
     private static void throwError() {
