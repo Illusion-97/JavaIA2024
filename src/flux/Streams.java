@@ -24,5 +24,12 @@ public class Streams {
                 .forEach(System.out::println);
 
         System.out.println("Mois dont la taille du nom est égale à 4");
+        monthsList.stream()
+                // filter récupère des données en fonction d'une condition (boolean)
+                // Predicat : prends un paramètre et attends un booleen en retour
+                .filter(month -> month.length() == 4)
+                .forEach(System.out::println);
+
+        System.out.println("Nombre de String vide dans la liste : ");
     }
 }
