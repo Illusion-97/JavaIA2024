@@ -114,8 +114,8 @@ public class Boucles {
 
         int whileIteration = 0;
         while (whileIteration < aRandomIntegerList.size()) {
-            whileIteration++; // important de mettre à jour la condition pour éviter la boucle infinie
             System.out.println(aRandomIntegerList.get(whileIteration));
+            whileIteration++; // important de mettre à jour la condition pour éviter la boucle infinie
         }
 
         while (true) { // on demande volontairement de créer une boucle infinie

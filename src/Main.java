@@ -1,4 +1,5 @@
 import com.sun.security.jgss.GSSUtil;
+import exceptions.TryCatch;
 import flux.Streams;
 import flux.lambda.Lambdas;
 import objects.Jardin;
@@ -18,33 +19,19 @@ public class Main {
             "BOUCLES", Boucles::main,
             "CLASSES", Jardin::main,
             "LAMBDAS", Lambdas::main,
-            "STREAMS", Streams::main
+            "STREAMS", Streams::main,
+            "EXCEPTIONS", TryCatch::main
     );
 
     private static final List<String> MAINS_KEYS = MAINS.keySet().stream().toList();
     // Un Set<> est une List<> sans doublons
     //private static final Set<String> MAINS_KEYS = MAINS.keySet();
 
+    private static String[] mainArgs;
     public static void main(String[] args) {
-
-        // Objet pouvant récupérer une saisie dans la console
-        //String line = scanner.nextLine();
-        //int saisie = scanner.nextInt();
-        /*boolean invalid = true;
-        do {
-            try {
-                System.out.println("Saisissez un entier : ");
-                Scanner scanner = new Scanner(System.in);
-                int saisie = scanner.nextInt();
-                invalid = false;
-                System.out.println(saisie);
-            } catch (Exception e) {
-                System.out.println("Saisie invalide.");
-            }
-        } while (invalid);*/
-      /*  System.out.println("Saisissez un entier : ");
-        System.out.println(getInputInt());*/
-        displayMenu();
+        //System.out.println("args : " + Arrays.toString(args));
+        mainArgs = args;
+        displayMenu(args);
     }
 
     private static int getInputInt() {
@@ -57,10 +44,25 @@ public class Main {
         }
     }
 
-    private static void displayMenu() {
+    private static void displayMenu(String[] args) {
         System.out.println("Saisissez le numéro du programme à lancer :");
-        for (String key : MAINS_KEYS) {
-            System.out.printf("%d\t->\t%s%n", MAINS_KEYS.indexOf(key), key);
+        /*for (String key : MAINS_KEYS) {
+            System.out.printf(" %d\t->\t%s%n", MAINS_KEYS.indexOf(key), key);
+        }*/
+        MAINS_KEYS.forEach(key -> System.out.printf(" %d\t->\t%s%n", MAINS_KEYS.indexOf(key), key));
+        System.out.println("-1\t->\tQuitter");
+        startMain(getInputInt(), args);
+    }
+
+    private static void startMain(int index, String[] args) {
+        // faire un return dans un void permet de sortir de la methode
+        if (index == -1) return;
+        try {
+            MAINS.get(MAINS_KEYS.get(index)).accept(args);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getClass().getSimpleName());
+            System.out.println("Veuillez saisir un nombre valide !");
         }
+        displayMenu(args);
     }
 }
