@@ -2,6 +2,7 @@ package flux;
 
 import java.text.DateFormatSymbols;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,7 +56,6 @@ public class Streams {
                 // anyMatch(condition) <-> filter(condition).count() > 0
                 monthsList.stream().anyMatch(month -> !month.matches("[a-z]*")));
 
-        ;
         System.out.println("Nombre total de lettres : " +
                         monthsList.stream()
                                 // Convertir un String en Integer correspondant à sa taille
@@ -69,5 +69,25 @@ public class Streams {
                                 .mapToInt(Integer::intValue)
                                 .sum()
                 );
+
+        // Solution collect
+        System.out.println(monthsList.stream().collect(Collectors.joining("")).length());
+
+        System.out.println("Les 3 mois ayant le plus grand nombre de lettres : ");
+        monthsList.stream()
+                // Le tri se base sur une valeur numérique :
+                // négative indique que l'élément doit être placé avant le suivant
+                // positive : doit être après
+                // 0 : position indifférente
+                .sorted((currentMonth,nextMonth) -> nextMonth.length() - currentMonth.length())
+                .limit(3)
+                .forEach(System.out::println);
+
+        monthsList.stream()
+                //.sorted((currentMonth,nextMonth) -> currentMonth.length() - nextMonth.length())
+                .sorted(Comparator.comparingInt(String::length))
+                .skip(monthsList.size() - 3)
+                .forEach(System.out::println);
+
     }
 }
