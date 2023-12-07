@@ -30,6 +30,17 @@ public class Streams {
                 .filter(month -> month.length() == 4)
                 .forEach(System.out::println);
 
-        System.out.println("Nombre de String vide dans la liste : ");
+        System.out.println("Nombre de String vide dans la liste : " +
+                        monthsList.stream()
+                                //.filter(month -> month.isEmpty())
+                                .filter(String::isEmpty)
+                                .count()
+                );
+
+        System.out.println("Remplacer monthList par une liste contenant les mois non 'Blank'");
+        // pour inverser une condition dans un predicat, il n'est pas possible de faire un passage 'Method Reference'
+        monthsList = monthsList.stream().filter(month -> !month.isBlank()).toList();
+
+        // Afficher sur une ligne : mars, avril, mai, juin, août
     }
 }
