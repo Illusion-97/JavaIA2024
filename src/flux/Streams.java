@@ -3,6 +3,7 @@ package flux;
 import java.text.DateFormatSymbols;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Streams {
     public static void main(String[] args) {
@@ -37,10 +38,36 @@ public class Streams {
                                 .count()
                 );
 
+        String emptyString = "";
+        String blankString = "     "; // emptyString.isBlank() : true
+
         System.out.println("Remplacer monthList par une liste contenant les mois non 'Blank'");
         // pour inverser une condition dans un predicat, il n'est pas possible de faire un passage 'Method Reference'
         monthsList = monthsList.stream().filter(month -> !month.isBlank()).toList();
 
         // Afficher sur une ligne : mars, avril, mai, juin, août
+        System.out.println(monthsList.stream()
+                .filter(month -> month.length() <= 5)
+                .collect(Collectors.joining(", ")));
+
+        // Est-ce que la liste contient au moins une valeur avec un caractère spécial
+        System.out.println("Est-ce que la liste contient au moins une valeur avec un caractère spécial : " +
+                // anyMatch(condition) <-> filter(condition).count() > 0
+                monthsList.stream().anyMatch(month -> !month.matches("[a-z]*")));
+
+        ;
+        System.out.println("Nombre total de lettres : " +
+                        monthsList.stream()
+                                // Convertir un String en Integer correspondant à sa taille
+                                // .map(month -> month.length())
+                                .map(String::length)
+                                // réduire l'ensemble des éléments de la liste en un seul du même type
+                                // identity : valeur de départ, suivi de la méthode de calcul
+                                // syntaxe de lambda (paramètres) -> corps de méthode
+                                //.reduce(0, (a,b) -> a + b)
+                                //.reduce(0, Integer::sum)
+                                .mapToInt(Integer::intValue)
+                                .sum()
+                );
     }
 }
