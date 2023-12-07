@@ -1,4 +1,28 @@
 package flux;
 
+import java.text.DateFormatSymbols;
+import java.util.Arrays;
+import java.util.List;
+
 public class Streams {
+    public static void main(String[] args) {
+        String[] months = DateFormatSymbols.getInstance().getMonths();
+
+        for (String month : months) System.out.println(month);
+
+        // Consumer : prends un paramètre d'un type, et ne retourne rien (void)
+        Arrays.stream(months).forEach(month -> System.out.println(month));
+        Arrays.stream(months).forEach(System.out::println);
+
+        // Les streams permettent d'enchainer des actions jusqu'à une opération dite 'terminale'
+        List<String> monthsList = Arrays.stream(months).toList();
+
+        monthsList.stream()
+                // map transforme les données dans le flux en fonction de la lambda passée en argument
+                //.map(month -> month.toUpperCase())
+                .map(String::toUpperCase)
+                .forEach(System.out::println);
+
+        System.out.println("Mois dont la taille du nom est égale à 4");
+    }
 }
