@@ -36,6 +36,10 @@ public class TryCatch {
             throwException();
             throwCustomException();
             throwCustomRuntimeException();
+        } catch (Error error) {
+            System.out.println(error.getMessage());
+        } catch (CustomException | CustomRuntimeException custom) {
+            System.out.println("CustomException | CustomRuntimeException");
         } catch (Exception exception) {
             System.out.println("exception.getClass().getSimpleName() = " + exception.getClass().getSimpleName());
             System.out.println("exception.getMessage() = " + exception.getMessage());
