@@ -1,8 +1,9 @@
 package objects;
 
 // On utilise des classes pour représenter des concepts qu'on fera interagir dans le programme
-public class Animal {
-
+public abstract class Animal {
+// Une classe abstraite définit un concept abstrait, il permet la création d'instance enfant, mais directement la sienne
+    //Pour être utilisée, une classe abstraite DOIT être héritée
     private static long count = 0;
     public enum AgeRange { // est statique par défaut
         JEUNE,ADULTE,SENIOR
@@ -79,4 +80,6 @@ public class Animal {
     public String toString() {
         return name;
     }
+
+    public abstract Animal getChild(Animal otherParent);
 }

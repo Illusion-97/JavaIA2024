@@ -1,8 +1,8 @@
 package objects;
 
 import java.util.Random;
-
-public class Malinois extends Animal implements Chien {
+// une classe notée 'final' ne peut pas être héritée
+public final class Malinois extends Animal implements Chien, MauvaisPerdant {
     public Malinois() {
     }
 
@@ -12,6 +12,11 @@ public class Malinois extends Animal implements Chien {
 
     public Malinois(String name, int age, Animal parent, Animal otherParent) {
         super(name, age, parent, otherParent);
+    }
+
+    @Override
+    public Malinois getChild(Animal otherParent) {
+        return new Malinois("", 0, this, otherParent);
     }
 
     @Override
@@ -30,7 +35,12 @@ public class Malinois extends Animal implements Chien {
         System.out.println(this +
                 (getVainqueur(adversaire, "l'honneur de son maître") == this
                         ? " saute sur son maître !"
-                        : " part se cacher !"));
+                        : perdre()));
 
     }
 }
+
+/* impossible puisque Malinois est final
+class Malouf extends Malinois {
+
+}*/

@@ -18,6 +18,11 @@ public class BergerAllemand extends Animal implements Chien {
         super(name, age, parent, otherParent);
     }
 
+    @Override
+    public BergerAllemand getChild(Animal otherParent) {
+        return new BergerAllemand("", 0, this, otherParent);
+    }
+
     public void displayPride() {
         System.out.println(name + " démontre sa fierté !");
         bark();
