@@ -4,11 +4,13 @@ import java.io.*;
 
 public class CSV {
     private static final String FILENAME = "Annuaire.csv";
+    private static final String DELIMITER = ",";
+    public static final String PERSON_DELIMITER = ";";
+    public static final String LINE_BREAK = "\n";
 
     public static void main(String[] args) {
         CSV serializer = new CSV();
         Annuaire annuaire;
-        serializer.exportAnnuaire(Annuaire.createAnnuaire());
         try {
             annuaire = serializer.importAnnuaire();
         } catch (Exception e) {
@@ -27,17 +29,26 @@ public class CSV {
     public void exportAnnuaire(Annuaire annuaire) {
         try (FileWriter fw = new FileWriter(FILENAME)) {
             fw.append(annuaire.getNom());
-            fw.append(",");
-            fw.append(annuaire.getOwner().getNom());
-            fw.append(";");
-            fw.append(String.valueOf(annuaire.getOwner().getTel()));
-            fw.append("\n");
+            fw.append(DELIMITER);
+            appendPerson(annuaire.getOwner(),fw);
             annuaire.getContacts().forEach(person -> {
-
+                // Les exceptions possibles dans une lambda doivent être gérées à l'intérieur de celle-ci
+                try {
+                    appendPerson(person, fw);
+                } catch (IOException e) {
+                    System.out.println("Impossible d'insérer le contact : " + person);
+                }
             });
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void appendPerson(Person person, FileWriter fw) throws IOException {
+        fw.append(person.getNom());
+        fw.append(PERSON_DELIMITER);
+        fw.append(String.valueOf(person.getTel()));
+        fw.append(LINE_BREAK);
     }
 
     public Annuaire importAnnuaire() throws IOException, ClassNotFoundException {
