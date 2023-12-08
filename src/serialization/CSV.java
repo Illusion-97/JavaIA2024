@@ -52,6 +52,10 @@ public class CSV {
     }
 
     public Annuaire importAnnuaire() throws IOException, ClassNotFoundException {
+        try(BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            // Chaque appel à la fonction readLine passe à la ligne suivante
+            String line = br.readLine();
+        }
         return null;
     }
 }
