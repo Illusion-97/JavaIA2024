@@ -7,6 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="mariadb.jdbc.java.client" level="project" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="e89c1d2c-952d-4230-99f4-6d70ff3e61fe" />
