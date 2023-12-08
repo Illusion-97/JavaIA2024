@@ -1,6 +1,8 @@
 package serialization;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CSV {
     private static final String FILENAME = "Annuaire.csv";
@@ -51,11 +53,37 @@ public class CSV {
         fw.append(LINE_BREAK);
     }
 
+    private static Person readPerson(String personString) {
+        String[] nameAndTel = personString.split(PERSON_DELIMITER);
+        return new Person(nameAndTel[0], Integer.parseInt(nameAndTel[1]));
+    }
+
     public Annuaire importAnnuaire() throws IOException, ClassNotFoundException {
         try(BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             // Chaque appel à la fonction readLine passe à la ligne suivante
-            String line = br.readLine();
+            /*String line = br.readLine();
+            String[] nameAndOwner = line.split(DELIMITER);
+            String name = nameAndOwner[0];
+            String ownerString = nameAndOwner[1];
+            Person owner = readPerson(ownerString);
+            *//*List<Person> contacts = new ArrayList<>();
+            *//**//*while ((line = br.readLine()) != null) {
+                contacts.add(readPerson(line));
+            }*//**//*
+            br.lines().forEach(personLine -> contacts.add(readPerson(personLine)));*//*
+            List<Person> contacts = br.lines()
+                    //.map(personLine -> readPerson(personLine))
+                    .map(CSV::readPerson)
+                    .toList();
+            return new Annuaire(name,owner,contacts);*/
+            String[] nameAndOwner = br.readLine().split(DELIMITER);
+            return new Annuaire(
+                    nameAndOwner[0],
+                    readPerson(nameAndOwner[1]),
+                    br.lines()
+                            //.map(personLine -> readPerson(personLine))
+                            .map(CSV::readPerson)
+                            .toList());
         }
-        return new Annuaire("",null,null);
     }
 }
