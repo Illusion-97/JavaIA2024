@@ -1,4 +1,13 @@
 package jdbc.models;
 
-public abstract class BaseEntity {
+import java.io.Serializable;
+
+public abstract class BaseEntity implements Serializable {
+    /*
+    * @Id
+    * @GeneratedValue(strategy = GenerationType.IDENTITY)
+    * */
+    private long id;
+    //@Version
+    private int version;
 }
