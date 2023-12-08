@@ -1,7 +1,6 @@
 package serialization;
 
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class TXT {
     private static final String FILENAME = "Annuaire.txt";
@@ -14,15 +13,18 @@ public class TXT {
     public void exportAnnuaire(Annuaire annuaire) {
         // FileOutputStream -> écriture de String dans un fichier
         // ObjectOutputStream -> utilise un FileOutputStream pour écrire des objets complets
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME));
+
+        //try with resources : création d'objet qui appelleront automatiquement leur fonction close dans un "finally"
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME))) {
             oos.writeObject(annuaire);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public Annuaire importAnnuaire() {
-        return null;
+    public Annuaire importAnnuaire() throws IOException, ClassNotFoundException {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILENAME))) {
+            return (Annuaire) ois.readObject();
+        }
     }
 }
