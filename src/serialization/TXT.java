@@ -7,7 +7,20 @@ public class TXT {
 
     public static void main(String[] args) {
         TXT serializer = new TXT();
-        serializer.exportAnnuaire(Annuaire.createAnnuaire());
+        Annuaire annuaire;
+        try {
+            annuaire = serializer.importAnnuaire();
+        } catch (Exception e) {
+            System.out.println("Impossible d'importer l'Annuaire.\nTentative d'export d'un nouvel Annuaire.");
+            serializer.exportAnnuaire(Annuaire.createAnnuaire());
+            try {
+                annuaire = serializer.importAnnuaire();
+            } catch (IOException | ClassNotFoundException ex) {
+                System.out.println("Impossible d'importer l'Annuaire.\nFin du programme.");
+                return;
+            }
+        }
+        System.out.println(annuaire);
     }
 
     public void exportAnnuaire(Annuaire annuaire) {

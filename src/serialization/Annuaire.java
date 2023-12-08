@@ -47,7 +47,7 @@ public class Annuaire implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("Nom : %s%nOwner : %s%nContacts : {%n%s%n}",
+        return String.format("Nom : %s%nOwner : %s%nContacts : {%n\t%s%n}",
                 nom,
                 // utilisera automatiquement sa méthode toString
                 owner,
