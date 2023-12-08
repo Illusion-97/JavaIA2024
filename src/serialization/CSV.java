@@ -56,6 +56,6 @@ public class CSV {
             // Chaque appel à la fonction readLine passe à la ligne suivante
             String line = br.readLine();
         }
-        return null;
+        return new Annuaire("",null,null);
     }
 }
