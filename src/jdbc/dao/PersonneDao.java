@@ -5,6 +5,7 @@ import jdbc.models.Personne;
 import jdbc.models.Role;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -25,12 +26,20 @@ public class PersonneDao implements IPersonneDao {
     public boolean create(Personne personne) {
         try (PreparedStatement ps = DbConnection.getInstance().prepareStatement(
                 // Dans un PreparedStatement, les ? sont des emplacements pour des valeurs
-                "INSERT INTO personne(version,nom,prenom,role) VALUES(?,?,?,?)")) {
+                "INSERT INTO personne(version,nom,prenom,role) VALUES(?,?,?,?)",
+                // Demande Explicitement au SGBD de retourner l'information de la clé générée
+                Statement.RETURN_GENERATED_KEYS)) {
+            // Des méthodes sont prévues dans PreparedStatement pour placer les valeurs en évitant l'injection SQL
             ps.setInt(1,personne.getVersion());
             ps.setString(2, personne.getNom());
             ps.setString(3, personne.getPrenom());
             ps.setString(4, personne.getRole().name());
             ps.execute();
+            // ResultSet permet de récupérer le retour d'une requête SQL
+            ResultSet rs = ps.getGeneratedKeys(); // Récupère l'id auto généré (via AUTO_INCREMENT)
+            if(rs.next()) { // Je me place sur la premiere ligne de la réponse à ma requête (s'il y en a bien une)
+                personne.setId(rs.getLong(1)); // Je récupère la valeur de la première colonne dans un type long
+            }
             return true;
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace(System.out);
