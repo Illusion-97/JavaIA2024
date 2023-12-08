@@ -2,7 +2,7 @@ package serialization;
 
 import java.io.*;
 
-public class TXT {
+public class TXT implements Serializer {
     private static final String FILENAME = "Annuaire.txt";
 
     public static void main(String[] args) {
@@ -23,6 +23,7 @@ public class TXT {
         System.out.println(annuaire);
     }
 
+    @Override
     public void exportAnnuaire(Annuaire annuaire) {
         // FileOutputStream -> écriture de String dans un fichier
         // ObjectOutputStream -> utilise un FileOutputStream pour écrire des objets complets
@@ -35,6 +36,7 @@ public class TXT {
         }
     }
 
+    @Override
     public Annuaire importAnnuaire() throws IOException, ClassNotFoundException {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILENAME))) {
             return (Annuaire) ois.readObject();

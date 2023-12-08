@@ -1,10 +1,8 @@
 package serialization;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class CSV {
+public class CSV implements Serializer {
     private static final String FILENAME = "Annuaire.csv";
     private static final String DELIMITER = ",";
     public static final String PERSON_DELIMITER = ";";
@@ -28,6 +26,7 @@ public class CSV {
         System.out.println(annuaire);
     }
 
+    @Override
     public void exportAnnuaire(Annuaire annuaire) {
         try (FileWriter fw = new FileWriter(FILENAME)) {
             fw.append(annuaire.getNom());
@@ -58,6 +57,7 @@ public class CSV {
         return new Person(nameAndTel[0], Integer.parseInt(nameAndTel[1]));
     }
 
+    @Override
     public Annuaire importAnnuaire() throws IOException, ClassNotFoundException {
         try(BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             // Chaque appel à la fonction readLine passe à la ligne suivante
