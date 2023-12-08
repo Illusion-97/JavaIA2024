@@ -2,7 +2,8 @@ package jdbc.models;
 
 import java.io.Serializable;
 
-public class Personne implements Serializable {
+//@Entity
+public class Personne extends BaseEntity implements Serializable {
     private String nom;
     private String prenom;
     private Role role;

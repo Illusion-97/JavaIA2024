@@ -2,6 +2,7 @@ package jdbc.models;
 
 import java.io.Serializable;
 
+//@MappedSuperclass
 public abstract class BaseEntity implements Serializable {
     /*
     * @Id
