@@ -60,7 +60,7 @@ public class Annuaire implements Serializable {
         List<Person> contacts = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < 10; i++){
-            contacts.add(new Person("Person " + i, random.nextLong(0, Long.MAX_VALUE)));
+            contacts.add(new Person("Person " + i, random.nextInt(0, Integer.MAX_VALUE)));
         }
         return new Annuaire("Mon annuaire", new Person("Yanis", 549685), contacts);
     }

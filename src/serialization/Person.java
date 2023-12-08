@@ -12,9 +12,9 @@ import java.io.Serializable;
 * */
 public class Person implements Serializable {
     private String nom;
-    private long tel;
+    private int tel;
 
-    public Person(String nom, long tel) {
+    public Person(String nom, int tel) {
         this.nom = nom;
         this.tel = tel;
     }
@@ -30,11 +30,11 @@ public class Person implements Serializable {
         this.nom = nom;
     }
 
-    public long getTel() {
+    public int getTel() {
         return tel;
     }
 
-    public void setTel(long tel) {
+    public void setTel(int tel) {
         this.tel = tel;
     }
 
