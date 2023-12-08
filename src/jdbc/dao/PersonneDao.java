@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PersonneDao implements IPersonneDao {
@@ -51,7 +52,7 @@ public class PersonneDao implements IPersonneDao {
     public Personne findById(long id) {
         Personne personne = null;
         try (PreparedStatement ps = DbConnection.getInstance().prepareStatement(
-                "SELECT * FROM Personne WHERE id = ?"
+                "SELECT * FROM personne WHERE id = ?"
         )) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
@@ -65,17 +66,49 @@ public class PersonneDao implements IPersonneDao {
 
     @Override
     public List<Personne> findAll() {
-        return null;
+        List<Personne> all = new ArrayList<>();
+        try(Statement s = DbConnection.getInstance().createStatement()) {
+            ResultSet rs = s.executeQuery("SELECT * FROM personne");
+            while (rs.next()) {
+                all.add(mapResultToPersonne(rs));
+            }
+        } catch (SQLException| ClassNotFoundException e) {
+            e.printStackTrace(System.out);
+        }
+        return all;
     }
 
     @Override
     public boolean update(Personne personne) {
-        return false;
+        int updated = 0;
+        try (PreparedStatement ps = DbConnection.getInstance().prepareStatement(
+                // Dans un PreparedStatement, les ? sont des emplacements pour des valeurs
+                "UPDATE personne SET version = ?, nom = ?, prenom = ?, role = ? WHERE id = ?")) {
+            // Des méthodes sont prévues dans PreparedStatement pour placer les valeurs en évitant l'injection SQL
+            ps.setInt(1,personne.getVersion());
+            ps.setString(2, personne.getNom());
+            ps.setString(3, personne.getPrenom());
+            ps.setString(4, personne.getRole().name());
+            ps.setLong(5, personne.getId());
+            updated = ps.executeUpdate();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(System.out);
+        }
+        return updated > 0;
     }
 
     @Override
     public boolean delete(long id) {
-        return false;
+        try (PreparedStatement ps = DbConnection.getInstance().prepareStatement(
+                "DELETE FROM personne WHERE id = ?")) {
+            ps.setLong(1, id);
+            ps.executeQuery();
+            return true;
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(System.out);
+            return false;
+        }
     }
 
     public Personne mapResultToPersonne(ResultSet rs) {
@@ -101,5 +134,11 @@ public class PersonneDao implements IPersonneDao {
         Personne yanis = new Personne(0,0,"ADEKALOM","Yanis", Role.CLIENT);
         personneDao.create(yanis);
         System.out.println("yanis.getId() = " + yanis.getId());
+        System.out.println("personneDao.findById(1) = " + personneDao.findById(1));
+        System.out.println("findAll()");
+        personneDao.findAll().forEach(System.out::println);
+        yanis.setRole(Role.FOURNISSEUR);
+        System.out.println("personneDao.update(yanis) = " + personneDao.update(yanis));
+        System.out.println("personneDao.delete(1) = " + personneDao.delete(1));
     }
 }

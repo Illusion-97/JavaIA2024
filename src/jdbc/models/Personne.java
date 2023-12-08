@@ -41,4 +41,13 @@ public class Personne extends BaseEntity implements Serializable {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    @Override
+    public String toString() {
+        return "Personne{" +
+                "nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }
