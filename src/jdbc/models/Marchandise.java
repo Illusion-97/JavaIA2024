@@ -1,4 +1,4 @@
 package jdbc.models;
 
-public class Marchandise {
+public class Marchandise extends BaseEntity {
 }

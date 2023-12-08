@@ -12,6 +12,14 @@ public abstract class BaseEntity implements Serializable {
     //@Version
     private int version;
 
+    public BaseEntity() {
+    }
+
+    public BaseEntity(long id, int version) {
+        this.id = id;
+        this.version = version;
+    }
+
     public long getId() {
         return id;
     }

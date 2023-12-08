@@ -49,7 +49,18 @@ public class PersonneDao implements IPersonneDao {
 
     @Override
     public Personne findById(long id) {
-        return null;
+        Personne personne = null;
+        try (PreparedStatement ps = DbConnection.getInstance().prepareStatement(
+                "SELECT * FROM Personne WHERE id = ?"
+        )) {
+            ps.setLong(1, id);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            personne = mapResultToPersonne(rs);
+        } catch (SQLException| ClassNotFoundException e) {
+            e.printStackTrace(System.out);
+        }
+        return personne;
     }
 
     @Override
@@ -67,10 +78,27 @@ public class PersonneDao implements IPersonneDao {
         return false;
     }
 
+    public Personne mapResultToPersonne(ResultSet rs) {
+        try {
+            return rs == null
+                    ? null
+                    : new Personne(
+                    rs.getLong("id"),
+                    rs.getInt("version"),
+                    rs.getString("nom"),
+                    rs.getString("prenom"),
+                    Role.valueOf(rs.getString("role"))
+            );
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+            return null;
+        }
+    }
+
     public static void main(String[] args) {
         IPersonneDao personneDao = new PersonneDao();
         personneDao.createTable();
-        Personne yanis = new Personne("ADEKALOM","Yanis", Role.CLIENT);
+        Personne yanis = new Personne(0,0,"ADEKALOM","Yanis", Role.CLIENT);
         personneDao.create(yanis);
         System.out.println("yanis.getId() = " + yanis.getId());
     }

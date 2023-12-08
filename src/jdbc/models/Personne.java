@@ -11,7 +11,8 @@ public class Personne extends BaseEntity implements Serializable {
     public Personne() {
     }
 
-    public Personne(String nom, String prenom, Role role) {
+    public Personne(long id, int version, String nom, String prenom, Role role) {
+        super(id, version);
         this.nom = nom;
         this.prenom = prenom;
         this.role = role;
