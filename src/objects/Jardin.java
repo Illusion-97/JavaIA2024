@@ -58,7 +58,10 @@ public class Jardin {
         System.out.println("\n");
         typeBerger.fight(typeMalinois);
 
+
         FightClub.startTournament();
+        Veterinaire.bilan();
+
     }
 
 

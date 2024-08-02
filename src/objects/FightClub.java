@@ -14,7 +14,8 @@ public class FightClub {
     }
 
     public static void startTournament() {
-
+        System.out.println("\u001B[36mFightClub.startTournament\u001B[0m");
+        chiens.stream().forEach(chien -> chien.bark());
     }
 
     public static void inscrire(Chien chien){
